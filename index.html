@@ -6,6 +6,56 @@
     <title>Santa Casa</title>
 </head>
 <body>
+    <h1>Bem Vindo!</h1>
     
+    <form id="cadPaciente">
+        <h3>Cadastrar Paciente</h3>
+        <label for="pId"><b>Id</b>
+            <input type="number" name="id" id="pId">
+            <input type="button" value="pesquisar" id="pPesquisar">
+        </label>
+        <br>
+        <label for="nome"><b>Nome</b>
+            <input type="text" name="nome" id="pNome">
+        </label><br>
+        <b>Sexo</b>
+        <input type="radio" id="html" name="sexo" value="M">
+        <label for="html">M</label>
+        <input type="radio" id="css" name="sexo" value="F">
+        <label for="css">F</label><br>
+        <label for="dt_nascimento"><b>Data de Nascimento</b>
+            <input type="date" name="dt_nascimento" id="dt_nascimento">
+        </label>
+        <br>
+        <input type="button" id="pSend" value="Cadastrar/Atualizar">
+        <input type="button" id="pDelete" value="Deletar">
+    </form>
+
+    <form id = "cadPtendtime">
+        <h3>Cadastrar Ptendtime</h3>
+        <label for="pId"><b>Id</b>
+            <input type="number" name="id" id="atId">
+            <input type="button" value="pesquisar" id="atPesquisar">
+        </label>
+        <br>
+        <label for="paciente"><b>Paciente</b>
+            <select name="" id="selectPaciente">
+                <option value="1">Paciente Nome</option>
+            </select>
+        </label><br>
+        <b>Tipo Atendimento</b>
+        <input type="radio" id="html" name="tipo_at" value="U">
+        <label for="html">Urgente</label>
+        <input type="radio" id="css" name="tipo_at" value="N">
+        <label for="css">Normal</label><br>
+        <label for="dt_atendimento"><b>Data</b>
+            <input type="date" name="dt_atendimento" id="dt_atendimento">
+        </label>
+        <br>
+        <input type="button" id="atSend" value="Cadastrar/Atualizar">
+        <input type="button" id="atDelete" value="Deletar">
+    </form>
+
+    <script src="index.js"></script>
 </body>
 </html>
