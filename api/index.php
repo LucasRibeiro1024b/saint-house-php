@@ -100,6 +100,13 @@ class api {
         try {
           $sql = "SELECT * FROM paciente";
           $stmt = $this->conn->prepare($sql);
+
+          if (!empty($this->obj["id"]) || $this->obj["id"] != null) {
+            $sql .= " WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $this->obj["id"]);
+          }
+
           $stmt->setFetchMode(PDO::FETCH_ASSOC);
           $stmt->execute();
 
@@ -187,6 +194,13 @@ class api {
         try {
           $sql = "SELECT * FROM ptendtime";
           $stmt = $this->conn->prepare($sql);
+
+          if (!empty($this->obj["id"]) || $this->obj["id"] != null) {
+            $sql .= " WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $this->obj["id"]);
+          }
+
           $stmt->setFetchMode(PDO::FETCH_ASSOC);
           $stmt->execute();
 
