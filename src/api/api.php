@@ -24,20 +24,18 @@ class api {
   }
 
   public function handleRequest() {
-    var_dump($_SERVER);
-
     $url = $_SERVER["REQUEST_URI"];
     $url = explode("/", $url);
     $this->method = $_SERVER['REQUEST_METHOD'];
 
-    if (!array_key_exists(4, $url)) {
+    if (!array_key_exists(3, $url)) {
       header("Status: 404 Not Found");
       return;
     }
 
     header("Status: 200");
 
-    switch ($url[4]) {
+    switch ($url[3]) {
       case 'paciente':
         if (!$this->handlePaciente()) {
           header("Status: 404");
