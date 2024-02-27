@@ -1,0 +1,15 @@
+{
+    "name": "lucas/saint-house-php",
+    "autoload": {
+        "psr-4": {
+            "sainthouse\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RibeiroLucas",
+            "email": "lucasribeiro1024b@gmail.com"
+        }
+    ],
+    "require": {}
+}

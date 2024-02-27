@@ -1,5 +1,6 @@
 <?php
-header("Content-Type: application/json; charset=UTF-8");
+
+namespace sainthouse\api;
 
 class api {
   private $conn = null;
@@ -12,10 +13,10 @@ class api {
     $password = "root";
 
     try {
-      $connection = new PDO("mysql:host=$servername;dbname=santacasa", $username, $password);
-      $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $connection = new \PDO("mysql:host=$servername;dbname=santacasa", $username, $password);
+      $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
       $this->conn = $connection;
-    } catch(PDOException $e) {
+    } catch(\PDOException $e) {
       $e->getMessage();
     }
 
@@ -23,6 +24,8 @@ class api {
   }
 
   public function handleRequest() {
+    var_dump($_SERVER);
+
     $url = $_SERVER["REQUEST_URI"];
     $url = explode("/", $url);
     $this->method = $_SERVER['REQUEST_METHOD'];
@@ -72,7 +75,7 @@ class api {
 
             echo json_encode(["message" => "New record created successfully"]);
             return true;
-          } catch(PDOException $e) {
+          } catch(\PDOException $e) {
             echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
             return false;
           }
@@ -89,7 +92,7 @@ class api {
           $stmt->execute();
 
           echo json_encode(["message" => "Record updated successfully"]);
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
           echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
           return false;
         }
@@ -107,7 +110,7 @@ class api {
             $stmt->bindParam(":id", $this->obj["id"]);
           }
 
-          $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          $stmt->setFetchMode(\PDO::FETCH_ASSOC);
           $stmt->execute();
 
           $rows = [];
@@ -121,7 +124,7 @@ class api {
           }
 
           echo json_encode($rows);
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
           echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
           return false;
         }
@@ -137,7 +140,7 @@ class api {
           $stmt->execute();
 
           echo json_encode(["message" => "Record deleted successfully"]);
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
           echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
           return false;
         }
@@ -166,7 +169,7 @@ class api {
 
             echo json_encode(["message" => "New record created successfully"]);
             return true;
-          } catch(PDOException $e) {
+          } catch(\PDOException $e) {
             echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
             return false;
           }
@@ -183,7 +186,7 @@ class api {
           $stmt->execute();
 
           echo json_encode(["message" => "Record updated successfully"]);
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
           echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
           return false;
         }
@@ -201,7 +204,7 @@ class api {
             $stmt->bindParam(":id", $this->obj["id"]);
           }
 
-          $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          $stmt->setFetchMode(\PDO::FETCH_ASSOC);
           $stmt->execute();
 
           $rows = [];
@@ -215,7 +218,7 @@ class api {
           }
 
           echo json_encode($rows);
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
           echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
           return false;
         }
@@ -231,7 +234,7 @@ class api {
           $stmt->execute();
 
           echo json_encode(["message" => "Record deleted successfully"]);
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
           echo json_encode(["message" => $sql . "<br>" . $e->getMessage()]);
           return false;
         }
@@ -243,6 +246,3 @@ class api {
     }
   }
 }
-
-$api = new api();
-$api->handleRequest();
